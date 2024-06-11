@@ -1,97 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E-corp</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #222;
-    color: #fff;
-  }
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  .news {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    flex: 1 1 45%;
-    margin-right: 10px;
-  }
-  .article {
-    margin-top: 20px;
-  }
-  .login {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    flex: 1 1 45%;
-    margin-left: 10px;
-  }
-  .login a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .logo {
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .logo img {
-    max-width: 200px;
-    height: auto;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display IP Address</title>
 </head>
 <body>
+    <div id="ipAddress">Loading...</div>
+    <h1>Hello Welcome to IP Adress scrapper</h1>
+    <p>Scraping IP adress LOL</p>
+    <script>
+        // Function to fetch the IP address
+        function getIPAddress() {
+            // Making a request to an IP address API
+            fetch('https://api.ipify.org/?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the content of the div with the IP address
+                    document.getElementById('ipAddress').innerText = `Your IP address is: ${data.ip}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching IP address:', error);
+                    document.getElementById('ipAddress').innerText = 'Failed to fetch IP address';
+                });
+        }
 
-<div class="container">
-  <div class="news">
-    <h2>Latest News:</h2>
-    <div class="article">
-      <h3>This article is more than 6 years old</h3>
-      <h4>Revealed: 50 million Facebook profiles harvested for Cambridge Analytica in major data breach</h4>
-      <p>Whistleblower describes how firm linked to former Trump adviser Steve Bannon compiled user data to target American voters</p>
-      <ul>
-        <li>‘I made Steve Bannon’s psychological warfare tool’: meet the data war whistleblower</li>
-        <li>Mark Zuckerberg breaks silence on Cambridge Analytica</li>
-      </ul>
-      <p>Carole Cadwalladr and Emma Graham-Harrison</p>
-      <p>Sat 17 Mar 2018 23.03 CET</p>
-      <p>First published on Sat 17 Mar 2018 14.01 CET</p>
-      <p>The data analytics firm that worked with Donald Trump’s election team and the winning Brexit campaign harvested millions of Facebook profiles of US voters, in one of the tech giant’s biggest ever data breaches, and used them to build a powerful software program to predict and influence choices at the ballot box.</p>
-      <p>A whistleblower has revealed to the Observer how Cambridge Analytica – a company owned by the hedge fund billionaire Robert Mercer, and headed at the time by Trump’s key adviser Steve Bannon – used personal information taken without authorisation in early 2014 to build a system that could profile individual US voters, in order to target them with personalised political advertisements.</p>
-      <p>Christopher Wylie, who worked with a Cambridge University academic to obtain the data, told the Observer: “We exploited Facebook to harvest millions of people’s profiles. And built models to exploit what we knew about them and target their inner demons. That was the basis the entire company was built on.”</p>
-      <p>Documents seen by the Observer, and confirmed by a Facebook statement, show that by late 2015 the company had found out that information had been harvested on an unprecedented scale. However, at the time it failed to alert users and took only limited steps to recover and secure the private information of more than 50 million individuals.</p>
-    </div>
-  </div>
-
-  <div class="login">
-    <div class="logo">
-      <img src="e-corp.png" alt="E-corp Logo">
-    </div>
-    <h2>Login to Your E-corp Account:</h2>
-    <p>Welcome back! Please login to access your account.</p>
-    <a href="#" id="login-link">Go to Login Page</a>
-  </div>
-</div>
-
-<script>
-  setTimeout(function() {
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-  }, 5000); // Redirect to Rick Roll video after 5 seconds
-</script>
-
+        // Call the function to get the IP address when the page loads
+        window.onload = getIPAddress;
+    </script>
 </body>
 </html>
